@@ -6,7 +6,7 @@ console.log("router connected")
 
 router.get('/',homeController.home);
 router.use('/user',require('./user'));
-router.use('/post',require('post'))
+router.use('/post',require('./post'))
 
 
 module.exports  = router;
