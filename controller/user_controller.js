@@ -1,3 +1,3 @@
-const express = require('express')
-const router = express.Router();
-const userController = require('../controller/user_controller')
+module.exports.profile = function(req ,res){
+    return res.end('<h1>This is user controller</h1>')
+}
