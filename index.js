@@ -1,12 +1,18 @@
 const express = require('express');
 const app = express();
 const port = 8000;
-const homeController = require('../Codial/controller/home_controller')
+const expressLayouts = require('express-ejs-layouts')
 
-app.use('/',require('./router'))
+app.use(expressLayouts);
+app.use(express.static('./assets'));
 
-app.set('view engine', 'ejs')
-app.set('views','./views')
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
+
+app.use('/',require('./router'));
+
+app.set('view engine', 'ejs');
+app.set('views','./views');
 
 
 app.listen(port,function(err){
