@@ -5,7 +5,8 @@ const homeController = require('../controller/home_controller')
 console.log("router connected")
 
 router.get('/',homeController.home);
-router.use('/user',require('./user'))
+router.use('/user',require('./user'));
+router.use('/post',require('post'))
 
 
 module.exports  = router;
