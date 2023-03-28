@@ -5,7 +5,8 @@ const homeController = require('../Codial/controller/home_controller')
 
 app.use('/',require('./router'))
 
-
+app.set('view engine', 'ejs')
+app.set('views','./views')
 
 
 app.listen(port,function(err){
