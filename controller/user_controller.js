@@ -22,6 +22,23 @@ module.exports.create = function(req ,res){
 }
 
 //get the sign In data
-module.exports.create_session = function(req,res){
+module.exports.create_session = async function(req,res){
+    const user = await User.findOne({email: req.body.email})
+    //if user found
+    if(user){
+        console.log('hello')
+    //handle if password not match
+        if(user.password != req.body.password){
+            return res.redirect('back');
+            console.log('hi')
 
+        }
+    //if usder found create session
+        res.cookie('user_id',user.id);
+        return res.redirect('/user/profile')
+    }
+    //if user not found
+    else{
+        return res.redirect('back');
+    }
 }
