@@ -42,3 +42,22 @@ module.exports.create_session = async function(req,res){
         return res.redirect('back');
     }
 }
+
+module.exports.profile = function(req ,res){
+    if(req.cookies.user_id){
+        User.findById(req.cookies.user_id ,function(err , user){
+            if(user){
+                res.render('profile',{
+                    title: "User Profile",
+                    user: user
+                })
+            }
+            else{
+                return res.redirect('back')
+            }
+        })
+    }
+    else{
+        return res.redirect('back')
+    }
+}
