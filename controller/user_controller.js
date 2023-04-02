@@ -56,6 +56,5 @@ module.exports.create = async function(req ,res){
 //get the sign In data
 module.exports.create_session = async function(req,res){
    //find the user
-git 
 
 }
