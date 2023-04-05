@@ -9,21 +9,23 @@ const User = require('../models/user');
 passport.use(new LocalStrategy({
         usernameField: 'email'
     },
-    function(email, password, done){
+    async function(email, password, done){
         // find a user and establish the identity
-      User.findOne({email: email}, function(err, user)  {
-            if (err){
-                console.log('Error in finding user --> Passport');
-                return done(err);
-            }
-
+        try {
+            let user = await User.findOne({email: email});  
             if (!user || user.password != password){
                 console.log('Invalid Username/Password');
                 return done(null, false);
             }
 
             return done(null, user);
-        });
+            
+        } catch (error) {
+            console.log('error');
+            return done(error);
+        }
+      
+        
     }
 
 
@@ -38,17 +40,32 @@ passport.serializeUser(function(user, done){
 
 
 // deserializing the user from the key in the cookies
-passport.deserializeUser(function(id, done){
-    User.findById(id, function(err, user){
-        if(err){
-            console.log('Error in finding user --> Passport');
-            return done(err);
-        }
-
+passport.deserializeUser( async function(id, done){
+   try {
+    let user = await User.findById(id);
         return done(null, user);
-    });
+   } catch (error) {
+        console.log('error');
+        return done (error);
+   }
+    
+    
 });
 
-
+//check if user is authenticated
+passport.checkAuthentication = function(req,res,next){
+    //if user is Authenticated then we can pass it to next to controller,Action
+    if(req.isAuthenticated()){
+        return next();
+    }
+}
+ 
+passport.setAuthenticatedUser = function(req, res , next){
+    if(req.isAuthenticated()){
+        //we will take the user which is already stored in the cookies to views 
+        res.locals.user = req.user;
+    }
+    next();
+}
 
 module.exports = passport;

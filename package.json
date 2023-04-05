@@ -1,16 +1,22 @@
 {
   "dependencies": {
+    "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
+    "math-random": "^2.0.1",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.3",
-    "node": "^19.8.1",
+    "node": "^17.9.1",
+    "node-sass": "^8.0.0",
+    "node-sass-middleware": "^1.0.1",
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sass": "^1.60.0",
+    "uuid": "^7.0.3"
   },
   "name": "codial",
   "version": "1.0.0",
@@ -18,7 +24,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile:sass": "node-sass scss/style.scss css/style.css",
+    "scss": "node-sass --watch assets/scss -o assets/css"
   },
   "repository": {
     "type": "git",

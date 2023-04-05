@@ -1,4 +1,29 @@
-body{
-    margin: 0;
-    /* text-align: center; */
+body {
+  margin: 0;
+}
+
+#top {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #00774f;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin-left: -40px;
+}
+
+span {
+  display: flex;
+}
+
+span li {
+  list-style-type: none;
+}
+
+span li a {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 5px;
 }
