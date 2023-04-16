@@ -2,10 +2,10 @@ body {
   margin: 0;
 }
 
-#top {
+.top {
   display: flex;
   flex-wrap: nowrap;
-  background-color: #00774f;
+  background-color: #00275a;
   height: 100px;
   justify-content: space-between;
   align-items: center;
@@ -13,17 +13,21 @@ body {
   margin-left: -40px;
 }
 
-span {
+.head {
   display: flex;
 }
 
-span li {
+.head li {
   list-style-type: none;
 }
 
-span li a {
+.head li a {
   color: white;
   text-decoration: none;
   font-size: 2rem;
   padding: 5px;
+}
+
+section {
+  margin-left: 2%;
 }

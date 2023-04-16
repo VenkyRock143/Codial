@@ -1,18 +1,32 @@
+<script src="https://kit.fontawesome.com/eb967e175e.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/layout.css">
+
     <ul>
+        
         <% if(locals.user) {%>
+        <div class="top">
+            <h1>Codeial</h1>
+            <form action="/users/homepage" method="post">
+                <input type="submit" value="home">
+            </form>
+            <span class="head">
             <li>
-                <a href="/users/profile">
+                <a href="/users/profilepage">
                     <%= user.name %>
                 </a>
             </li>
             <li>
                 <a href="/users/logout">logout</a>
             </li>
-
+        </span>
+    </div>
         <%} else{%>
-            <div id="top">
+    <div class="top">
                 <h1>Codeial</h1>
-            <span>
+                <form action="/users/homepage" method="post">
+                    <input type="submit" value="home">
+                </form>
+            <span class="head">
             <li>
                 <a href="/users/sign-in">sign-in</a>
             </li>
@@ -20,8 +34,9 @@
                 <a href="/users/sign-up">sign-up</a>
             </li>
         </span>
-            </div>
+          </div>
         <%}%>
-    </ul>
+    </ul>  
+
 
 

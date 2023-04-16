@@ -1,11 +1,68 @@
+const express = require('express');
 const User = require('../models/user');
+const path = require('path');
+const fs = require('fs');
 
 
-module.exports.profile = function(req, res){
-    return res.render('user_profile', {
-        title: 'User Profile'
-    })
+module.exports.profile = async function(req, res){
+    let user = await User.findById(req.params.id)
+        return res.render('user_profile', {
+            title: 'User Profile',
+            profile_user: user
+        });
+
 }
+
+module.exports.profilepage = async function(req, res){
+    let user = await User.findById(req.params.id)
+        return res.render('profilepage', {
+            title: 'User Profile'
+        });
+
+}
+// module.exports.update = async function(req, res){
+//     if(req.user.id == req.params.id){
+//         await User.findByIdAndUpdate(req.params.id, req.body)
+//         req.flash('success','Updated Successfully')
+//             return res.redirect('back');
+//     }else{
+//         req.flash('error','Cannot Update')
+//         return res.status(401).send('Unauthorized');
+//     }
+// }
+module.exports.update = async function(req,res){
+    if(req.user.id == req.params.id){
+        try{       
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar(req,res,function(err){
+                if(err){
+                    console.log("***Error In Multer***:", err);
+                }
+                user.name = req.body.name;
+                user.email = req.body.email;
+                
+                if(req.file){
+                    if(user.avatar){
+                       if(fs.existsSync(path.join(__dirname,'..',user.avatar))){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                       }
+                    }
+                    user.avatar = User.avatarPath+ '\\'+ req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+            });
+        }
+        catch(err){
+            return res.redirect('back');
+        }
+    }
+    else{
+        return res.status(401).send('Unauthorized');
+    }
+}
+
+
 
 
 // render the sign up page
@@ -31,19 +88,28 @@ module.exports.signIn = function(req, res){
 
 // get the sign up data
 module.exports.create = async function(req, res){
-    if (req.body.password != req.body.confirm_password){
+    try {
+         if (req.body.password != req.body.confirm_password){
+            req.flash('error','Password Unmatched!')
         return res.redirect('back');
     }
     const oldUser = await User.findOne({email: req.body.email});
-    console.log(newUser)
+    console.log(oldUser)
     if(!oldUser){
         const createdUser = await User.create(req.body)
         console.log(createdUser)
+        req.flash('success','Signed In SuccessFully')
         return res.redirect('/users/sign-in')
     }
     else{
+        req.flash('error','User Already Exists')
         return res.redirect('back')
     }
+    } catch (error) {
+        console.log('Error'.err);
+        return res.redirect('back');
+    }
+   
 }
 
 //     User.findOne({email: req.body.email}, function(err, user){
@@ -65,10 +131,41 @@ module.exports.create = async function(req, res){
 
 // sign in and create a session for the user
 module.exports.createSession = function(req, res){
+    req.flash('success','successfully logged in!')
     return res.redirect('/');
 }
-
+module.exports.homepage = function(req, res){
+    return res.redirect('/');
+}
 // module.exports.destroySession = function(req ,res){
 //     req.logout();
 //     return res.redirect('/');
 // }
+// module.exports.destroySession= function(req,res){
+//     req.logout(function(err){
+//         if(err){
+//             console.log("Error in Log Out",err);
+//         }
+//         req.flash('success','Successfully Logged Out')
+//         return res.redirect('/')
+//     });
+// }
+
+module.exports.destroySession= function(req,res){
+    req.logout(function(err){
+        if(err){
+            console.log("error")
+            return;
+        }
+        req.session.destroy(function(err){
+        if(err){
+            console.log("error")
+            return;
+        } 
+        res.clearCookie('codeial')
+        return res.redirect('/') 
+        // req.flash('success','Successfully Logged Out')
+        });
+       
+    });
+}
