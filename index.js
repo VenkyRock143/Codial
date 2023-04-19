@@ -13,7 +13,7 @@ const passportGoogle     =       require('./config/passport-google-oauth-strateg
 const MongoStore         =       require('connect-mongo')(session);
 const sassMiddleware     =       require('node-sass-middleware');
 const flash              =       require('connect-flash')
-const customMware        =       require('./config/middleware')
+const customMware        =       require('./config/middleware');
 
 
 

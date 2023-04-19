@@ -11,6 +11,8 @@
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
+    "kue": "^0.11.6",
+    "kue-ui": "^0.1.0",
     "math-random": "^2.0.1",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.3",
