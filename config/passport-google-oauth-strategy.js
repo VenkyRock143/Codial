@@ -3,12 +3,17 @@ const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const crypto = require('crypto');
 require('dotenv').config();
 const User = require('../models/user');
+const env = require('./environment')
 
 //tell passport to use new google strategy for login
 passport.use(new googleStrategy({
-        clientID:process.env.clientID,
-        clientSecret:process.env.clientSecret,
-        callbackURL:process.env.callbackURL
+      clientID: env.google_client_id,
+      clientSecret: env.google_client_secret,
+      callbackURL:env.google_call_back_url
+
+        // clientID:process.env.clientID,
+        // clientSecret:process.env.clientSecret,
+        // callbackURL:process.env.callbackURL
 },
 async function(accessToken, refreshToken, profile, done) {
     try {

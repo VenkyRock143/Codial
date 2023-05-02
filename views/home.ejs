@@ -1,7 +1,6 @@
-
-        <h1>
-            Codeial / <%= title %>
-        </h1>
+<link rel="stylesheet" type="text/css" href="<%= assetPath('/css/home.css') %>">
+<link rel="stylesheet" type="text/css"  href="<%= assetPath('/css/chat_box.css') %>">
+        <div class="content-container">
         <section id="feed-posts">
             <h4>Posts</h4>
             <%if(locals.user){%>
@@ -25,19 +24,21 @@
         </section>
 
         <section id="user-friends">
-            <h4>Friends</h4>
+            <h4>Users</h4>
             <%for(u of all_users){%>
                 <p>
                     <a href="/users/profile/<%= u.id%>"><%=u.name%></a>
                 </p>
             <%}%>
         </section>
-        
-<script src="/js/home_comments.js"></script>
-<script src="/js/home_posts.js"></script>
+        <%- include('_chat_box')-%>
+    </div>
+ <!-- importing this script for creating the comments -->       
+<script src="<%= assetPath('js/home_comments.js')%>"></script>
+<script src="<%= assetPath('js/home_posts.js')%>"></script>
 
 <!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
-<script src="/js/toggle_likes.js"></script>
+<script src="<%= assetPath('js/toggle_likes.js')%>"></script>
 <script>
     $('.toggle-like-button').each(function(){
         let self = this;
@@ -45,3 +46,10 @@
     });
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<script src="<%= assetPath('js/chat_engine.js')%>"></script>
+<% if (locals.user){ %>
+<script>
+    new ChatEngine('user-chat-box', '<%= locals.user.email %>')
+</script>
+<% } %>

@@ -1,0 +1,11 @@
+.content-container {
+  display: flex;
+  margin-left: 30%; }
+
+#feed-posts {
+  width: 60%; }
+
+#user-friends {
+  width: 40%;
+  border-left: 2px solid grey;
+  padding-left: 5px; }
