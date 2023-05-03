@@ -1,4 +1,4 @@
-git const express            =       require('express');
+const express            =       require('express');
 const env                =       require('./config/environment');
 const logger             =       require('morgan');
 const cookieParser       =       require('cookie-parser');
