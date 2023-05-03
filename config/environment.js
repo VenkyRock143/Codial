@@ -1,4 +1,5 @@
 const fs = require('fs');
+require('dotenv').config();
 const rfs = require('rotating-file-stream');
 const path = require('path');
 
@@ -16,24 +17,24 @@ const accessLogStream = rfs.createStream('access.log', {
 const development = {
     name: 'development',
     asset_path: './assets',
-    session_cookie_key: 'gn1hyfZo34FHkH9LuDkpndCowJZJMIsH',
-    db: 'codeial_development',
+    session_cookie_key: process.env.Session_cookie_key,
+    db: process.env.DB,
     smtp: {
         service: 'gmail',
         host: 'smtp.gmail.com',
         port: 587,
         secure: false,
         auth: {
-            user: 'venky.balusani1@gmail.com',
-            pass: 'lhibxfzivxhxwrjm'
+            user: process.env.User,
+            pass: process.env.Pass
         },tls: {
             rejectUnauthorized: false
         }
     },
-    google_client_id: "1098500760309-37br3u6c2pcc9ni7969uf8q8cvna40mp.apps.googleusercontent.com",
-    google_client_secret: "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",
-    google_call_back_url: "http://localhost:9000/users/auth/google/callback",
-    jwt_secret_key: '7sjvCQ0gMjowH7QjMBPsZLPMmasPhawg',
+    google_client_id: process.env.Google_client_id,
+    google_client_secret: process.env.Google_client_secret,
+    google_call_back_url: process.env.Google_call_back_url,
+    jwt_secret_key: process.env.Jwt_secret_key,
     morgan: {
         mode: 'dev',
         options: {stream: accessLogStream}
