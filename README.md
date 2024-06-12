@@ -14,7 +14,17 @@ Codial is a web application designed for managing and sharing content. This repo
 - **Frontend**: JavaScript, EJS, CSS/SCSS
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
-
+Codial/
+├── assets/                 # Static files like images, stylesheets
+├── config/                 # Configuration files
+├── controllers/            # Controllers for handling requests
+├── models/                 # Database schemas and models
+├── routes/                 # Application routes
+├── views/                  # EJS templates for the frontend
+├── .env                    # Environment variables
+├── app.js                  # Main application file
+├── package.json            # Project metadata and dependencies
+└── README.md               # Project documentation
 ## Installation
 
 1. Clone the repository:
