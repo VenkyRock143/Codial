@@ -2,14 +2,6 @@ const Post = require('../models/post')
 const User = require('../models/user');
 
 module.exports.home = async function(req, res){
-    // console.log(req.cookies);
-    // res.cookie('user_id', 25);
-    // Post.find({},function(err,posts){
-    //     return res.render('home', {
-    //         title: "Codial | Home",
-    //         post:posts
-    //     });
-    // });
 //populate the user
 
 try{

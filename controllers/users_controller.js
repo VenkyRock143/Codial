@@ -20,16 +20,6 @@ module.exports.profilepage = async function(req, res){
         });
 
 }
-// module.exports.update = async function(req, res){
-//     if(req.user.id == req.params.id){
-//         await User.findByIdAndUpdate(req.params.id, req.body)
-//         req.flash('success','Updated Successfully')
-//             return res.redirect('back');
-//     }else{
-//         req.flash('error','Cannot Update')
-//         return res.status(401).send('Unauthorized');
-//     }
-// }
 module.exports.update = async function(req,res){
     if(req.user.id == req.params.id){
         try{       
@@ -112,23 +102,6 @@ module.exports.create = async function(req, res){
    
 }
 
-//     User.findOne({email: req.body.email}, function(err, user){
-//         if(err){console.log('error in finding user in signing up'); return}
-
-//         if (!user){
-//             User.create(req.body, function(err, user){
-//                 if(err){console.log('error in creating user while signing up'); return}
-
-//                 return res.redirect('/users/sign-in');
-//             })
-//         }else{
-//             return res.redirect('back');
-//         }
-
-//     });
-// }
-
-
 // sign in and create a session for the user
 module.exports.createSession = function(req, res){
     req.flash('success','successfully logged in!')
@@ -137,19 +110,6 @@ module.exports.createSession = function(req, res){
 module.exports.homepage = function(req, res){
     return res.redirect('/');
 }
-// module.exports.destroySession = function(req ,res){
-//     req.logout();
-//     return res.redirect('/');
-// }
-// module.exports.destroySession= function(req,res){
-//     req.logout(function(err){
-//         if(err){
-//             console.log("Error in Log Out",err);
-//         }
-//         req.flash('success','Successfully Logged Out')
-//         return res.redirect('/')
-//     });
-// }
 
 module.exports.destroySession= function(req,res){
     req.logout(function(err){

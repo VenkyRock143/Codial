@@ -9,21 +9,6 @@ let opts = {
     secretOrKey: env.jwt_secret_key
 }
 
-// passport.use(new JWTStrategy(opts, function(jwtPayLoad, done){
-//     User.findById(jwtPayLoad._id, function(err,user){
-//         if(err){
-//             console.log("error in jwt",err);
-//             return;
-//         }
-//         if(user){
-//             return done(null,user);
-//         }
-//         else{
-//             return done(null,false);
-//         }
-//     });
-
-// }));
 passport.use(new JWTStrategy(opts, async (jwtPayload, done) => {
   try {
     const user = await User.findById(jwtPayload._id);

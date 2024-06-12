@@ -7,14 +7,6 @@ const env = require('./environment')
 
 //tell passport to use new google strategy for login
 passport.use(new googleStrategy({
-      // clientID: env.google_client_id,
-      // clientSecret: env.google_client_secret,
-      // callbackURL:env.google_call_back_url
-
-        // clientID:process.env.clientID,
-        // clientSecret:process.env.clientSecret,
-        // callbackURL:process.env.callbackURL
-
         clientID: env.google_client_id,
         clientSecret:env.google_client_secret,
         callbackURL:env.google_call_back_url
