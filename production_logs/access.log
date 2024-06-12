@@ -364,3 +364,8 @@
 [0mGET /users/profile/css/user_profile.css [33m404[0m 325.350 ms - 173[0m
 [0mGET /users/profilepage [32m200[0m 140.964 ms - 1463[0m
 [0mGET /users/css/user_profile.css [33m404[0m 70.855 ms - 165[0m
+[0mGET /users/css/user_profile.css [33m404[0m 172.951 ms - 165[0m
+[0mPOST /users/homepage [36m302[0m 93.937 ms - 46[0m
+[0mGET / [32m200[0m 408.952 ms - 3458[0m
+[0mGET /users/profile/666a140c3232f4ffc1ef7e8a [36m304[0m 99.444 ms - -[0m
+[0mGET /users/profile/css/user_profile.css [33m404[0m 67.763 ms - 173[0m
