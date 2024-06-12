@@ -5,7 +5,7 @@ const env = require('./environment');
 mongoose.connect(env.db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 30000, // 30 seconds
+    serverSelectionTimeoutMS: 300000, // 30 seconds
 });
 
 mongoose.connection.on('connected', () => {
