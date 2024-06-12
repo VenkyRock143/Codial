@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const env = require('./environment');
+<<<<<<< HEAD
 // require('dotenv').config();
+=======
+>>>>>>> 7860ebadb21f87904f2c68df9a838b30a8a09eff
 
 mongoose.connect(env.db, {
     useNewUrlParser: true,
