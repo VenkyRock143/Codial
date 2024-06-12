@@ -19,17 +19,17 @@ Codial is a web application designed for managing and sharing content. This repo
 
 ```sh
 │
-├── assets
-├── config
-├── controllers
-├── mailers
-├── models
-├── production_logs
-├── public
-├── routes
-├── uploads/user/avatars
-├── views
-├── workers
+├──── assets
+├──── config
+├──── controllers
+├──── mailers
+├──── models
+├──── production_logs
+├──── public
+├──── routes
+├──── uploads/user/avatars
+├──── views
+├──── workers
 ├── dump.rdb
 ├── gulpfile.js
 ├── index.js
