@@ -30,8 +30,8 @@ const path               =       require('path')
 
 if (env.name == 'development'){
     app.use(sassMiddleware({
-        src: path.join(__dirname,env.CODEIAL_ASSET_PATH, 'scss'),
-        dest: path.join(__dirname,env.CODEIAL_ASSET_PATH, 'css'),
+        src: path.join(__dirname, env.asset_path, 'scss'),
+        dest: path.join(__dirname, env.asset_path, 'css'),
         debug: true,
         outputStyle: 'extended',
         prefix: '/css'
