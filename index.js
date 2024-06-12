@@ -17,7 +17,8 @@ const MongoStore         =       require('connect-mongo')(session);
 const sassMiddleware     =       require('sass-middleware');
 const flash              =       require('connect-flash');
 const customMware        =       require('./config/middleware');
-
+const path               =       require('path')
+const { redisClient, redisStore } = require('./config/redis');
 
 
 //setup the chat serverto be used with socket.io
@@ -25,8 +26,6 @@ const chatServer = require('http').createServer(app);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
 chatServer.listen(5000);
 console.log('chat server is listening on port 5000')
-const path               =       require('path')
-
 
 if (env.name == 'development'){
     app.use(sassMiddleware({
@@ -37,6 +36,8 @@ if (env.name == 'development'){
         prefix: '/css'
     }));
 }
+
+
 
 app.use(express.urlencoded());
 
@@ -69,19 +70,20 @@ app.use(session({
     cookie: {
         maxAge: (1000 * 60 * 100)
     },
-    store: new MongoStore(
-        {
-            mongooseConnection:db,
-            autoremove:'disabled'
-        }
-        ,
-        {
-            function(err){
-                console.log(err || 'connect-mongodb setup ok')
-            }
-        }
+    store: redisStore
+    // store: new MongoStore(
+    //     {
+    //         mongooseConnection:db,
+    //         autoremove:'disabled'
+    //     }
+    //     ,
+    //     {
+    //         function(err){
+    //             console.log(err || 'connect-mongodb setup ok')
+    //         }
+    //     }
         
-        )
+    //     )
 }));
 
 app.use(passport.initialize());
