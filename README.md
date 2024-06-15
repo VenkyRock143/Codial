@@ -9,6 +9,8 @@ Codial is a web application designed for managing and sharing content. This repo
 - **Media Uploads**: Users can upload and manage media files.
 - **Notifications and Messaging**: Real-time notifications and messaging between users.
 
+**Link:** [Codial](https://codial-qtar.onrender.com)
+
 ## Technologies Used
 
 - **Frontend**: JavaScript, EJS, CSS/SCSS
