@@ -1,11 +1,26 @@
 .content-container {
   display: flex;
-  margin-left: 30%; }
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px auto;
+  width: 80%;
+  gap: 20px;
+}
 
 #feed-posts {
-  width: 60%; }
+  width: 65%;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
 
 #user-friends {
-  width: 40%;
-  border-left: 2px solid grey;
-  padding-left: 5px; }
+  width: 30%;
+  border-left: 2px solid #e0e0e0;
+  padding-left: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
