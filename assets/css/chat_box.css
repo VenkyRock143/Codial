@@ -2,52 +2,79 @@
   position: fixed;
   bottom: 10px;
   right: 10px;
-  border: 1px solid grey;
-  height: 250px;
-  width: 200px;
-  background: white;
-  padding: 5px;
-  box-shadow: 1px 1px 1px 1px lightgrey; }
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  height: 350px;
+  width: 300px;
+  background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
 #user-chat-box #chat-messages-list {
   list-style: none;
-  padding: 5px;
-  height: 70%;
-  background-color: white;
-  overflow: auto; }
+  padding: 10px;
+  height: 75%;
+  background-color: #f4f6f9;
+  overflow-y: auto;
+  border-bottom: 1px solid #dcdcdc;
+}
 
 #user-chat-box #chat-messages-list .other-message {
   text-align: left;
-  padding: 3px; }
+  padding: 8px;
+}
 
 #user-chat-box #chat-messages-list .other-message span {
   display: inline-block;
-  padding: 10px;
-  background-color: #ffa0a0; }
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: #ffdde1;
+  color: #333;
+}
 
 #user-chat-box #chat-messages-list .self-message {
   text-align: right;
-  padding: 3px; }
+  padding: 8px;
+}
 
 #user-chat-box #chat-messages-list .self-message span {
   display: inline-block;
-  padding: 10px;
-  background-color: #a0dcff; }
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: #b3e5fc;
+  color: #333;
+}
 
 #user-chat-box #chat-message-input-container {
-  height: 24%;
+  height: 25%;
   width: 100%;
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+}
 
 #user-chat-box #chat-message-input-container #chat-message-input {
-  height: 50%;
-  width: 70%; }
+  height: 80%;
+  width: 70%;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
 
 #user-chat-box #chat-message-input-container #send-message {
-  height: 50%;
-  width: 30%;
-  font-size: 15px;
+  height: 80%;
+  width: 28%;
+  margin-left: 5px;
+  font-size: 16px;
   color: white;
   border: none;
-  background: #58d258; }
+  border-radius: 8px;
+  background: linear-gradient(90deg, #66bb6a, #43a047);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#user-chat-box #chat-message-input-container #send-message:hover {
+  background: linear-gradient(90deg, #43a047, #2e7d32);
+}
